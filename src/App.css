@@ -1,0 +1,5 @@
+.list-msg-items {
+    height: calc(100vh - 153px - 2em);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
