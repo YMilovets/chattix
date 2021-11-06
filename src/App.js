@@ -10,33 +10,38 @@ import Nav from './components/nav';
 
 function App({socket, ...props}) {
   const [store, setStore] = useState([]);
+  const [users, setUsers] = useState([]);
   const msgField = useRef();
 
   socket.on("getListMsg", (data) => {
     setStore(data)
   })
+  socket.on("getUsers", (data) => {
+    setUsers(state => data)
+  })
+  
   socket.on("connect", () => {
-    socket.emit("getData")
+    socket.emit("join");
   })
 
   const onSend = (e) => {
     e.preventDefault();
     socket.emit("send", {
       text: msgField.current.value.trim(),
-      user: "Awesome",
+      user: socket.id,
       date: Date.now()
     })
     msgField.current.value = "";   
   }
  
   return (
-    <div className="App">
+    <div className="App d-flex flex-column flex-grow-1">
       <Nav />
-      <div className="m-3 d-flex">
+      <div className="m-3 d-flex flex-grow-1">
         <ListUsers>
-          <ListUserItem />
+          {users.map(elem => <ListUserItem key={elem.id} id={elem.id} />)}
         </ListUsers>
-        <div className="list-msg h-100 w-100 ms-3">
+        <div className="list-msg w-100 ms-3 d-flex flex-column">
           <ListMsg>
             {store.map((elem, i) => <ListMsgItem key={i} msgItem={elem} />)}
           </ListMsg>

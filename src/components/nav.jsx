@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Dropdown from './dropdown';
 
 export default function Nav() {
     const [active, setActive] = useState(false);
@@ -7,19 +8,19 @@ export default function Nav() {
     }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
-            <a className="navbar-brand" href="#">ChaTTers</a>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                <a onClick={onShow} class="nav-link dropdown-toggle" href="#">
-                    Настройка
-                </a>
-                <div class={`dropdown-menu ${active && "show"}`}>
-                    <a class="dropdown-item" href="#">Сменить имя пользователя</a>
-                    <a class="dropdown-item" href="#">Выйти</a>
-                </div>
-                </li>
-            </ul>
+            <div className="navbar-brand" href="#">Chattix</div>
+            <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul className="navbar-nav">
+                    <li className="nav-item dropdown">
+                        <div onClick={onShow} className="nav-link dropdown-toggle">
+                            Настройка
+                        </div>
+                        <Dropdown className={active && "show"} >
+                            <div className="dropdown-item" href="#">Сменить имя пользователя</div>
+                            <div className="dropdown-item" href="#">Выйти</div>
+                        </Dropdown>
+                    </li>
+                </ul>
             </div>
         </nav>
     )
