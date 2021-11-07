@@ -1,3 +1,12 @@
 .list-msg {
     height: calc(100vh - 56px - 2em);
 }
+.auth-content {
+    background: url("./auth-content-bg.jpg");
+    background-size: cover;
+    height: calc(100vh - 56px);
+}
+.list-users-wrap {
+    width: 200px;
+    height: calc(100vh - 56px - 2em);
+}

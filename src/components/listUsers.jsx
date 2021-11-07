@@ -2,8 +2,10 @@ import React from 'react'
 
 export default function ListUsers(props) {
     return (
-        <ul className="list-users list-group flex-shrink-0">
-            {props.children}
-        </ul>
+        <div className="list-users-wrap flex-shrink-0 overflow-auto">
+            <ul className="list-users list-group shadow-sm">
+                {props.children}
+            </ul>
+        </div>
     )
 }
